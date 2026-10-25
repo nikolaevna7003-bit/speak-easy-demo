@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow" data-publish>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Speak Easy: английский онлайн</title>
+<meta name="description" content="Онлайн-курсы английского для взрослых и детей. Начните с бесплатного пробного урока.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Одна линия: сверху каждого раздела жирная чёрная полоса 10px и крупный заголовок.
+   Ничего, кроме этого приёма, на странице не повторяется. */
+:root {
+  --bg: #f8f1ed;
+  --fg: #1d2a22;
+  --muted: #5a675f;
+  --panel: #fffaf8;
+  --accent: #2f6b4d;
+  --accent-ink: #f8f3ef;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --text: "Golos Text", "Segoe UI", Arial, sans-serif;
+  --gap-section: clamp(72px, 12vw, 152px);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--text);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow-x: hidden;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; }
+
+/* Шапка */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 20px;
+}
+.brand { font-family: var(--display); font-weight: 700; font-size: 20px; text-decoration: none; }
+.top nav { display: flex; gap: 18px; font-size: 15px; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--fg); }
+
+/* Раздел */
+.sec {
+  margin-top: var(--gap-section);
+  border-top: 10px solid var(--fg);
+  padding-top: 28px;
+}
+.sec h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 1.2rem + 4vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+.lead { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem); color: var(--muted); max-width: 40ch; margin: 24px 0 0; }
+
+/* Первый экран */
+.hero { margin-top: 28px; display: grid; gap: 48px; }
+.hero-text { min-width: 0; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 1rem + 5.4vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 11ch;
+  border-top: 10px solid var(--fg);
+  padding-top: 28px;
+}
+.hero .lead { margin-top: 28px; }
+.hero .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 36px;
+}
+.hero .small { color: var(--muted); font-size: 15px; margin: 0; }
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 16px 28px;
+  border: 0;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+
+/* Что мешает: заголовок слева, список справа */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  margin-top: 48px;
+}
+.split ol, .split ul { list-style: none; padding: 0; margin: 0; }
+.split li {
+  border-top: 1px solid var(--fg);
+  padding: 22px 0;
+}
+.split li strong { display: block; font-size: 1.25rem; font-weight: 600; margin-bottom: 6px; }
+.split li span { color: var(--muted); }
+
+/* Как решаем: текст в две трети, сдвиг вправо */
+.solve { margin-top: 48px; max-width: 62ch; margin-left: 0; }
+.solve p { font-size: 1.15rem; margin: 0 0 20px; }
+.solve p:first-child { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height: 1.35; font-weight: 500; }
+
+/* Шаги: настоящая последовательность, поэтому номера уместны */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  gap: 0;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 8px 16px;
+  padding: 24px 0;
+  border-top: 1px solid var(--fg);
+}
+.steps li:last-child { border-bottom: 1px solid var(--fg); }
+.steps .n { font-family: var(--display); font-weight: 700; font-size: 1.4rem; }
+.steps h3 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+.steps p { margin: 0; color: var(--muted); grid-column: 2; }
+
+/* Для кого: две колонки без рамок */
+.who {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 48px;
+}
+.who article h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin: 0 0 12px;
+}
+.who article p { margin: 0; color: var(--muted); }
+
+/* Цены: главная карточка шире и закрашена */
+.price {
+  margin-top: 48px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+.price .main {
+  background: var(--panel);
+  padding: 36px 32px;
+  border-radius: 2px;
+}
+.price .main h3 { font-family: var(--display); font-weight: 600; font-size: 1.5rem; margin: 0 0 12px; }
+.price .main p { margin: 0 0 24px; color: var(--muted); }
+.price .side { border-top: 1px solid var(--fg); padding-top: 20px; }
+.price .side p { margin: 0 0 12px; color: var(--muted); }
+
+/* Вопросы */
+details { border-top: 1px solid var(--fg); padding: 20px 0; }
+details:last-of-type { border-bottom: 1px solid var(--fg); }
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+details p { margin: 12px 0 0; color: var(--muted); max-width: 60ch; }
+.faq { margin-top: 48px; }
+
+/* Заявка: форма смещена вправо на широком экране */
+.form-wrap { margin-top: 48px; display: grid; gap: 32px; }
+form { display: grid; gap: 20px; }
+label { display: grid; gap: 8px; font-size: 15px; color: var(--muted); }
+input, select {
+  font: inherit;
+  font-size: 17px;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--fg);
+  padding: 10px 0;
+  border-radius: 0;
+  width: 100%;
+  color-scheme: inherit;
+}
+input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+.hint { font-size: 15px; color: var(--muted); margin: 0; }
+
+.channels { display: grid; gap: 12px; }
+.channels button {
+  font: inherit;
+  font-size: 17px;
+  text-align: left;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--fg);
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.channels button:hover { background: var(--panel); }
+.thanks { font-family: var(--display); font-weight: 600; font-size: 1.6rem; margin: 0; }
+
+.foot {
+  margin-top: var(--gap-section);
+  border-top: 10px solid var(--fg);
+  padding-block: 28px 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.hero-img { margin: 0; }
+.hero-img img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
+.who-img { margin: 48px 0 0; }
+.who-img img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 2px; }
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+}
+
+/* Планшет и компьютер */
+@media (min-width: 760px) {
+  body { font-size: 18px; }
+  .top nav { font-size: 16px; }
+  .split { grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+  .split h2 { margin: 0; }
+  .who { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .price { grid-template-columns: 1.6fr 1fr; align-items: start; gap: 40px; }
+  .price .main { padding: 48px 44px; }
+  .form-wrap { grid-template-columns: 1fr 1.4fr; gap: 72px; }
+  .form-wrap > div:first-child { padding-top: 0; }
+  .solve { margin-left: 33%; }
+  .hero { grid-template-columns: 1.3fr 1fr; align-items: center; gap: 72px; }
+  .hero h1 { max-width: 15ch; font-size: clamp(2.4rem, 2rem + 2.6vw, 4.5rem); }
+  .who-img { max-width: 560px; }
+  .steps li { grid-template-columns: 96px 1fr 2fr; align-items: baseline; }
+  .steps p { grid-column: 3; margin: 0; }
+  .steps .n { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="#top">Speak Easy</a>
+    <nav aria-label="Разделы">
+      <a href="#pochemu">Зачем</a>
+      <a href="#kak">Как идём</a>
+      <a href="#ceny">Цены</a>
+      <a href="#zayavka">Записаться</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-text">
+    <h1>Английский онлайн. Первый урок бесплатно</h1>
+    <p class="lead">Для взрослых и детей. Пробный урок ни к чему не обязывает.</p>
+    <div class="row">
+      <a class="btn" href="#zayavka">Записаться на пробный урок</a>
+      <p class="small">Пробный урок бесплатный и ни к чему не обязывает.</p>
+    </div>
+    </div>
+    <figure class="hero-img">
+      <img src="english-assets/hero-girl.webp" alt="Девушка в очках улыбается и занимается за ноутбуком у окна, рядом чашка чая" width="1000" height="1000">
+    </figure>
+  </section>
+
+  <section class="sec" id="pochemu">
+    <h2>Что обычно мешает начать</h2>
+    <div class="split">
+      <div></div>
+      <ul>
+        <li><strong>Страшно говорить</strong><span>Кажется, что скажете неправильно и все засмеются. На первом уроке никто не ждёт идеальной речи.</span></li>
+        <li><strong>Непонятно, с какого уровня</strong><span>Школьные знания выветрились, а курсы для «начинающих» скучные или слишком сложные. Уровень определяем вместе.</span></li>
+        <li><strong>Нет времени на регулярность</strong><span>Занятия идут онлайн, а расписание подбираем под ваш график, а не наоборот.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="kak-reshaem">
+    <h2>Как мы это решаем</h2>
+    <div class="solve">
+      <p>Английский быстрее идёт, когда вы говорите, а не только слушаете правила. Поэтому каждое занятие строим вокруг разговора.</p>
+      <p>Первый урок показывает, что вы уже знаете и что для вас важно: работа, поездки, экзамен или просто уверенность в разговоре. Под это собираем программу. Дальше идёт понятный план, а не набор случайных тем.</p>
+      <p>Для детей занятия короткие и с игрой, для взрослых – с упором на живую речь и тех ситуаций, где английский нужен вам.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="kak">
+    <h2>Как проходит работа</h2>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>Оставляете заявку</h3><p>Имя, телефон и кому нужны занятия. Мы свяжемся и договоримся о времени.</p></li>
+      <li><span class="n">2</span><h3>Проходите пробный урок</h3><p>Бесплатно и онлайн. Смотрим уровень, цели и подходит ли вам преподаватель.</p></li>
+      <li><span class="n">3</span><h3>Получаете план и расписание</h3><p>Обсуждаем программу, формат и удобное время. Решаете сами, стартовать или нет.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="dlya-kogo">
+    <h2>Для кого курсы</h2>
+    <figure class="who-img">
+      <img src="english-assets/people-v2.webp" alt="Муж и жена на кухне смотрят на планшет с уроком" width="900" height="900" loading="lazy">
+    </figure>
+    <div class="who">
+      <article>
+        <h3>Взрослым</h3>
+        <p>Для работы, переезда, поездок или экзамена. Занятия подстраиваем под ваш график и цели, а говорить начинаете с первого урока.</p>
+      </article>
+      <article>
+        <h3>Детям</h3>
+        <p>Короткие занятия с игрой и понятными заданиями. Ребёнок привыкает говорить по-английски без давления, а родители видят, что происходит на уроке.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="ceny">
+    <h2>Сколько стоит</h2>
+    <div class="price">
+      <div class="main">
+        <h3>Пробный урок – бесплатно</h3>
+        <p>Посмотрите, как проходят занятия, познакомьтесь с преподавателем и поймёте, нужен ли вам такой формат.</p>
+        <a class="btn" href="#zayavka">Записаться бесплатно</a>
+      </div>
+      <div class="side">
+        <p>Стоимость курса зависит от формата и целей. Назовём точную цену после пробного урока, до оплаты.</p>
+        <p>Оплата только после того, как вы решили заниматься.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="voprosy">
+    <h2>Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Нужен ли опыт, чтобы начать?</summary>
+        <p>Нет. Уровень определяем на пробном уроке, и занятия начинаем с того места, где вы сейчас.</p>
+      </details>
+      <details>
+        <summary>Что нужно для занятий?</summary>
+        <p>Компьютер, ноутбук или телефон с камерой, микрофоном и интернетом. Ничего скачивать не нужно.</p>
+      </details>
+      <details>
+        <summary>Можно ли перенести занятие?</summary>
+        <p>Да, предупредите заранее, и мы перенесём урок на другое время.</p>
+      </details>
+      <details>
+        <summary>Занимаются ли дети и взрослые в одной группе?</summary>
+        <p>Нет. Детские и взрослые группы идут отдельно, чтобы занятия подходили возрасту.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="sec" id="zayavka">
+    <h2>Запишитесь на пробный урок</h2>
+    <div class="form-wrap">
+      <div>
+        <p class="lead" style="margin-top:0">Оставьте имя и телефон. Мы перезвоним и подберём время для бесплатного урока.</p>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <label for="f-name">Имя
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </label>
+          <label for="f-phone">Телефон
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          </label>
+          <label for="f-who">Занятия нужны
+            <select id="f-who" name="who">
+              <option value="self">Мне</option>
+              <option value="kid">Ребёнку</option>
+              <option value="unsure">Пока не знаю</option>
+            </select>
+          </label>
+          <p class="hint" id="f-error" hidden>Укажите имя и телефон, чтобы мы могли связаться.</p>
+          <div>
+            <button class="btn" type="submit">Отправить заявку</button>
+          </div>
+        </form>
+
+        <div id="step-channel" hidden>
+          <p class="lead" style="margin-top:0">Как вам удобнее получить ответ?</p>
+          <div class="channels">
+            <button type="button" data-channel="email">Email</button>
+            <button type="button" data-channel="telegram">Telegram</button>
+            <button type="button" data-channel="vk">ВКонтакте</button>
+            <button type="button" data-channel="max">MAX</button>
+          </div>
+        </div>
+
+        <div id="step-thanks" hidden>
+          <p class="thanks">Спасибо! Заявка принята.</p>
+          <p class="lead">Мы напишем вам в выбранный мессенджер или по почте и подберём время пробного урока.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Speak Easy · онлайн-курсы английского</span>
+    <span>Пробный урок бесплатный</span>
+  </footer>
+</div>
+
+<script>
+// Адреса каналов связи. Заполните, когда будут настоящие данные.
+const CHANNELS = {
+  email: "",
+  telegram: "",
+  vk: "",
+  max: ""
+};
+
+const form = document.getElementById("lead");
+const error = document.getElementById("f-error");
+const stepChannel = document.getElementById("step-channel");
+const stepThanks = document.getElementById("step-thanks");
+let lead = {};
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = form.elements.name.value.trim();
+  const phone = form.elements.phone.value.trim();
+  if (!name || !phone) {
+    error.hidden = false;
+    return;
+  }
+  error.hidden = true;
+  lead = { name, phone, who: form.elements.who.value };
+  stepChannel.hidden = false;
+  stepChannel.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+stepChannel.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-channel]");
+  if (!button) return;
+  lead.channel = button.dataset.channel;
+  lead.address = CHANNELS[lead.channel] || "";
+  // Заявка пока никуда не уходит: здесь будет отправка на ваш адрес или сервис.
+  stepChannel.hidden = true;
+  form.hidden = true;
+  stepThanks.hidden = false;
+  stepThanks.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+</body>
+</html>
