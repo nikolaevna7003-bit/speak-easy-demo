@@ -55,7 +55,7 @@ a { color: inherit; }
   padding-block: 20px;
 }
 .brand { font-family: var(--display); font-weight: 700; font-size: 20px; text-decoration: none; white-space: nowrap; }
-.top nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 12px; font-size: 14px; }
+.top nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 12px; font-size: 15px; }
 .top nav a { text-decoration: none; color: var(--muted); white-space: nowrap; }
 .top nav a:hover { color: var(--fg); }
 
@@ -188,6 +188,8 @@ a { color: inherit; }
 .price .main p { margin: 0 0 24px; color: var(--muted); }
 .price .side { border-top: 1px solid var(--fg); padding-top: 20px; }
 .price .side p { margin: 0 0 12px; color: var(--muted); }
+.price .side .price-line { display: flex; justify-content: space-between; gap: 16px; color: var(--fg); margin: 0 0 14px; }
+.price-line strong { font-weight: 600; white-space: nowrap; }
 
 /* Вопросы */
 details { border-top: 1px solid var(--fg); padding: 20px 0; }
@@ -221,19 +223,11 @@ input, select {
 input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
 .hint { font-size: 15px; color: var(--muted); margin: 0; }
 
-.channels { display: grid; gap: 12px; }
-.channels button {
-  font: inherit;
-  font-size: 17px;
-  text-align: left;
-  color: var(--fg);
-  background: transparent;
-  border: 1px solid var(--fg);
-  padding: 14px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-}
-.channels button:hover { background: var(--panel); }
+.consent { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--muted); }
+.consent input { width: 20px; height: 20px; flex: none; margin: 2px 0 0; padding: 0; border: 1px solid var(--fg); border-radius: 0; accent-color: var(--accent); }
+.consent a { color: var(--fg); }
+details#soglasie { margin-top: 24px; }
+details#soglasie p { font-size: 15px; }
 .thanks { font-family: var(--display); font-weight: 600; font-size: 1.6rem; margin: 0; }
 
 .foot {
@@ -332,8 +326,8 @@ input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent
   <section class="sec" id="kak">
     <h2>Как проходит работа</h2>
     <ol class="steps">
-      <li><span class="n">1</span><h3>Оставляете заявку</h3><p>Имя, телефон и кому нужны занятия. Мы свяжемся и договоримся о времени.</p></li>
-      <li><span class="n">2</span><h3>Проходите пробный урок</h3><p>Бесплатно и онлайн. Смотрим уровень, цели и подходит ли вам преподаватель.</p></li>
+      <li><span class="n">1</span><h3>Оставляете заявку</h3><p>Имя, ник в Telegram и кому нужны занятия. Мы напишем вам и договоримся о времени.</p></li>
+      <li><span class="n">2</span><h3>Проходите пробный урок</h3><p>Бесплатно, онлайн и 1 час. Определяем ваш уровень, цели и то, подходит ли вам преподаватель.</p></li>
       <li><span class="n">3</span><h3>Получаете план и расписание</h3><p>Обсуждаем программу, формат и удобное время. Решаете сами, стартовать или нет.</p></li>
     </ol>
   </section>
@@ -360,11 +354,13 @@ input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent
     <div class="price">
       <div class="main">
         <h3>Пробный урок – бесплатно</h3>
-        <p>Посмотрите, как проходят занятия, познакомьтесь с преподавателем и поймёте, нужен ли вам такой формат.</p>
+        <p>Пробный урок длится 1 час. За это время мы определяем ваш уровень английского и цели, а вы решаете, подходит ли вам такой формат.</p>
         <a class="btn" href="#zayavka">Записаться бесплатно</a>
       </div>
       <div class="side">
-        <p>Стоимость курса зависит от формата и целей. Назовём точную цену после пробного урока, до оплаты.</p>
+        <p class="price-line"><span>Группа для детей</span><strong>4&nbsp;400&nbsp;₽</strong></p>
+        <p class="price-line"><span>Группа для взрослых</span><strong>5&nbsp;500&nbsp;₽</strong></p>
+        <p class="price-line"><span>Индивидуально, за 1 час</span><strong>1&nbsp;500&nbsp;₽</strong></p>
         <p>Оплата только после того, как вы решили заниматься.</p>
       </div>
     </div>
@@ -396,15 +392,15 @@ input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent
     <h2>Запишитесь на пробный урок</h2>
     <div class="form-wrap">
       <div>
-        <p class="lead" style="margin-top:0">Оставьте имя и телефон. Мы перезвоним и подберём время для бесплатного урока.</p>
+        <p class="lead" style="margin-top:0">Оставьте имя и ник в Telegram. Мы напишем вам и подберём время для бесплатного урока.</p>
       </div>
       <div>
         <form id="lead" novalidate>
           <label for="f-name">Имя
             <input id="f-name" name="name" type="text" autocomplete="name" required>
           </label>
-          <label for="f-phone">Телефон
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          <label for="f-tg">Ник в Telegram
+            <input id="f-tg" name="tg" type="text" placeholder="@ваш_ник" autocomplete="off" required>
           </label>
           <label for="f-who">Занятия нужны
             <select id="f-who" name="who">
@@ -413,72 +409,51 @@ input:focus, select:focus { outline: none; border-bottom: 3px solid var(--accent
               <option value="unsure">Пока не знаю</option>
             </select>
           </label>
-          <p class="hint" id="f-error" hidden>Укажите имя и телефон, чтобы мы могли связаться.</p>
+          <label class="consent" for="f-consent">
+            <input id="f-consent" name="consent" type="checkbox" required>
+            <span>Согласен(на) на обработку имени и ника в Telegram. <a href="#soglasie">Текст согласия</a></span>
+          </label>
+          <p class="hint" id="f-error" hidden>Укажите имя, ник в Telegram и отметьте согласие.</p>
           <div>
             <button class="btn" type="submit">Отправить заявку</button>
           </div>
         </form>
 
-        <div id="step-channel" hidden>
-          <p class="lead" style="margin-top:0">Как вам удобнее получить ответ?</p>
-          <div class="channels">
-            <button type="button" data-channel="email">Email</button>
-            <button type="button" data-channel="telegram">Telegram</button>
-            <button type="button" data-channel="vk">ВКонтакте</button>
-            <button type="button" data-channel="max">MAX</button>
-          </div>
-        </div>
-
         <div id="step-thanks" hidden>
           <p class="thanks">Спасибо! Заявка принята.</p>
-          <p class="lead">Мы напишем вам в выбранный мессенджер или по почте и подберём время пробного урока.</p>
+          <p class="lead">Чтобы мы быстрее ответили, напишите нам в Telegram.</p>
+          <p style="margin-top:24px"><a class="btn" href="https://t.me/VP_ya" target="_blank" rel="noopener">Написать в Telegram @VP_ya</a></p>
         </div>
+
+        <details id="soglasie">
+          <summary>Текст согласия на обработку данных</summary>
+          <p>Оператор данных: Speak Easy, онлайн-курсы английского. Отправляя заявку, вы даёте согласие на обработку имени и ника в Telegram. Эти данные нужны только для того, чтобы связаться с вами по поводу пробного урока. Мы не передаём их третьим лицам. Согласие можно отозвать в любой момент, написав нам в Telegram @VP_ya. После этого мы удалим ваши данные.</p>
+        </details>
       </div>
     </div>
   </section>
 
   <footer class="foot">
     <span>Speak Easy · онлайн-курсы английского</span>
-    <span>Пробный урок бесплатный</span>
+    <a href="https://t.me/VP_ya" target="_blank" rel="noopener">Telegram @VP_ya</a>
   </footer>
 </div>
 
 <script>
-// Адреса каналов связи. Заполните, когда будут настоящие данные.
-const CHANNELS = {
-  email: "",
-  telegram: "",
-  vk: "",
-  max: ""
-};
-
 const form = document.getElementById("lead");
 const error = document.getElementById("f-error");
-const stepChannel = document.getElementById("step-channel");
 const stepThanks = document.getElementById("step-thanks");
-let lead = {};
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const name = form.elements.name.value.trim();
-  const phone = form.elements.phone.value.trim();
-  if (!name || !phone) {
+  const tg = form.elements.tg.value.trim();
+  if (!name || !tg || !form.elements.consent.checked) {
     error.hidden = false;
     return;
   }
   error.hidden = true;
-  lead = { name, phone, who: form.elements.who.value };
-  stepChannel.hidden = false;
-  stepChannel.scrollIntoView({ behavior: "smooth", block: "center" });
-});
-
-stepChannel.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-channel]");
-  if (!button) return;
-  lead.channel = button.dataset.channel;
-  lead.address = CHANNELS[lead.channel] || "";
-  // Заявка пока никуда не уходит: здесь будет отправка на ваш адрес или сервис.
-  stepChannel.hidden = true;
+  // Заявка пока никуда не отправляется: здесь нужно подключить отправку в Telegram или сервис.
   form.hidden = true;
   stepThanks.hidden = false;
   stepThanks.scrollIntoView({ behavior: "smooth", block: "center" });
